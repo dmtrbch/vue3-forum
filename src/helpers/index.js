@@ -44,7 +44,7 @@ export const fetchItem = ({ id, emoji, resource, resourceName }) => {
         setItem({ resource, item })
         resolve(item)
       })
-    useUnsubscribesStore().appendUnsubscribe({ unsubscribe })
+    useUnsubscribesStore().appendUnsubscribe({ unsubscribe }) // this is the reason why we don't have the user data in the navbar
   })
 }
 

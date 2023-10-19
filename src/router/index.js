@@ -10,6 +10,7 @@ import ThreadCreate from '@/views/ThreadCreate.vue'
 import ThreadEdit from '@/views/ThreadEdit.vue'
 import { findById } from '@/helpers'
 import { unsubscribeAllSnapshots } from '@/helpers'
+import Register from '@/views/Register.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -76,6 +77,11 @@ const router = createRouter({
       name: 'ThreadEdit',
       component: ThreadEdit,
       props: true
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/:pathMatch(.*)*',

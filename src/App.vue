@@ -32,9 +32,9 @@ function onPageReady() {
   <div class="container">
     <router-view v-slot="{ Component }" @ready="onPageReady">
       <Suspense timeout="0">
-        <template #default>
+        <div class="container">
           <component :is="Component" />
-        </template>
+        </div>
         <template #fallback>
           <app-spinner />
         </template>
@@ -47,5 +47,4 @@ function onPageReady() {
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

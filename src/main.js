@@ -11,21 +11,14 @@ import 'firebase/compat/firestore'
 import FontAwesome from '@/plugins/FontAwesome.js'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBAXdbTB3U0vurnooHybQX0Bfi3qba1Kv8',
-  authDomain: 'vue-school-forum-3ffae.firebaseapp.com',
-  projectId: 'vue-school-forum-3ffae',
-  storageBucket: 'vue-school-forum-3ffae.appspot.com',
-  messagingSenderId: '1034349237819',
-  appId: '1:1034349237819:web:d7363218b0b0fe271a6e1e',
-  // apiKey: import.meta.env.VUE_APP_FIREBISE_API_KEY,
-  // authDomain: import.meta.env.VUE_APP_FIREBISE_AUTH_DOMAIN,
-  // projectId: import.meta.env.VUE_APP_FIREBISE_PROJECT_ID,
-  // storageBucket: import.meta.env.VUE_APP_FIREBISE_STORAGE_BUCKET,
-  // messagingSenderId: import.meta.env.VUE_APP_FIREBISE_MESSAGING_SENDER_ID,
-  // appId: import.meta.env.VUE_APP_FIREBISE_APP_ID
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
-// eslint-disable-next-line no-unused-vars
 firebase.initializeApp(firebaseConfig)
 
 const app = createApp(App) // creating vue instance
