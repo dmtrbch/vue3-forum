@@ -3,11 +3,13 @@ import { useUsersStore } from '@/stores/UsersStore'
 import { useThreadsStore } from '@/stores/ThreadsStore'
 import { usePostsStore } from '@/stores/PostsStore'
 import { fetchItem, findById, setItem } from '@/helpers'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth';
 
 export const useUserStore = defineStore('UserStore', {
   state: () => {
     return {
-      authId: 'u4r8XCziZEWEXsj2UIKNHBoDh0n2'
+      authId: null
     }
   },
   getters: {
@@ -59,6 +61,10 @@ export const useUserStore = defineStore('UserStore', {
   },
   actions: {
     fetchAuthUser() {
+      const userId = firebase.auth().currentUser?.uid
+      if(!userId) return
+      this.authId = userId
+
       const { users } = useUsersStore()
       return fetchItem({ id: this.authId, emoji: 'User', resource: users, resourceName: 'users' })
     },

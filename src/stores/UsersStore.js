@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import {fetchItems, fetchItem, setItem} from '@/helpers/index.js'
+import {useUserStore} from "@/stores/UserStore.js";
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth';
@@ -20,6 +21,15 @@ export const useUsersStore = defineStore('UsersStore', {
     async registerUserWithEmailAndPassword(avatar = null, email, name, username, password) {
       const result = await firebase.auth().createUserWithEmailAndPassword(email, password)
       await this.createUser(result.user.id, email, name, username, avatar)
+      // await useUserStore().fetchAuthUser()
+    },
+    async signInWithEmailAndPassword(email, password) {
+      return firebase.auth().signInWithEmailAndPassword(email, password)
+    },
+    async signOut() {
+      await firebase.auth().signOut()
+
+      useUserStore().authId = null
     },
     async createUser(id, email, name, username, avatar = null){
       const registeredAt = firebase.firestore.FieldValue.serverTimestamp()

@@ -2,15 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import ThreadShow from '@/views/ThreadShow.vue'
 import NotFound from '@/views/NotFound.vue'
-import sourceData from '@/data.json'
 import Forum from '@/views/Forum.vue'
 import Category from '@/views/Category.vue'
 import Profile from '@/views/Profile.vue'
 import ThreadCreate from '@/views/ThreadCreate.vue'
 import ThreadEdit from '@/views/ThreadEdit.vue'
-import { findById } from '@/helpers'
 import { unsubscribeAllSnapshots } from '@/helpers'
 import Register from '@/views/Register.vue'
+import SignIn from "@/views/SignIn.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,6 +81,11 @@ const router = createRouter({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/signin',
+      name: 'SignIn',
+      component: SignIn
     },
     {
       path: '/:pathMatch(.*)*',

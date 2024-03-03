@@ -6,6 +6,7 @@ import { useForumsStore } from '@/stores/ForumsStore.js'
 import { storeToRefs } from 'pinia' // we need this to make categories reactive object
 import { useAsyncDataStatus } from '@/composables/useAsyncDataStatus.js'
 import { watch } from 'vue'
+import {useUserStore} from "@/stores/UserStore.js";
 
 const emit = defineEmits(['ready'])
 
@@ -25,6 +26,9 @@ when destructuring a reactive object its keys become unreactive
 const categories = await categoriesStore.fetchAllCategories()
 const forumIds = categories.map((category) => category.forums).flat()
 await forumsStore.fetchForums(forumIds)
+
+const { authUser } = storeToRefs(useUserStore())
+console.log(authUser.value)
 
 asyncDataStatus_fetched()
 </script>
